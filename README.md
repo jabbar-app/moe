@@ -1,61 +1,126 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Aplikasi Presensi dengan Fitur Emoticon
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Deskripsi Aplikasi
 
-## About Laravel
+Aplikasi ini adalah sistem presensi berbasis web yang memungkinkan pengguna (peserta acara/kegiatan) untuk melakukan check-in kehadiran melalui tautan unik atau kode QR. Aplikasi ini dilengkapi dengan fitur penentuan status kehadiran berdasarkan waktu check-in relatif terhadap waktu target, dan menampilkan emoticon yang sesuai dengan status tersebut. Administrator dapat membuat dan mengelola daftar hadir, menghasilkan tautan dan kode QR untuk presensi, serta melihat data kehadiran.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   **Check-in Peserta:** Peserta dapat melakukan check-in melalui tautan unik atau kode QR yang disediakan.
+-   **Selfie Check-in:** Proses check-in memerlukan peserta untuk mengambil foto selfie sebagai bukti kehadiran.
+-   **Status Kehadiran Berbasis Waktu:** Aplikasi menentukan status kehadiran (misalnya: Sangat Awal, Tepat Waktu, Terlambat) berdasarkan waktu check-in relatif terhadap waktu target yang ditentukan oleh administrator.
+-   **Emoticon Dinamis:** Emoticon yang ditampilkan saat check-in dipilih secara acak berdasarkan status kehadiran dan aturan yang dikonfigurasi oleh administrator.
+-   **Manajemen Daftar Hadir (Admin):**
+    -   Membuat daftar hadir baru dengan nama acara, deskripsi, tanggal, dan waktu acara.
+    -   Mengatur waktu buka dan tutup check-in, serta waktu target tepat waktu.
+    -   Mengelola aturan emoticon berdasarkan offset waktu relatif terhadap waktu target.
+    -   Menampilkan daftar hadir yang telah dibuat.
+    -   Mengedit dan memperbarui informasi daftar hadir.
+    -   Menghapus daftar hadir.
+    -   Melihat detail daftar hadir, termasuk daftar peserta yang telah check-in.
+    -   Menghasilkan dan menampilkan kode QR untuk tautan presensi.
+    -   Meregenerasi tautan unik dan kode QR untuk daftar hadir.
+-   **Autentikasi Admin:** Sistem dilengkapi dengan autentikasi untuk administrator.
+-   **Dashboard Admin:** Halaman dashboard yang menyediakan ringkasan dan akses cepat ke fitur-fitur manajemen daftar hadir dan profil.
+-   **Validasi Input:** Validasi data yang ketat untuk memastikan integritas data.
+-   **Penyimpanan Gambar Selfie:** Gambar selfie peserta disimpan dengan aman.
+-   **Responsif:** Tampilan aplikasi dirancang responsif untuk berbagai ukuran layar.
+-   **Dark Mode:** Dukungan tampilan dark mode untuk kenyamanan pengguna.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Teknologi yang Digunakan
 
-## Learning Laravel
+-   **PHP:** Bahasa pemrograman server-side.
+-   **Laravel:** Framework PHP yang digunakan untuk membangun aplikasi.
+-   **Blade:** Templating engine Laravel untuk tampilan antarmuka pengguna.
+-   **Tailwind CSS:** Framework CSS utility-first untuk styling yang cepat dan responsif.
+-   **Carbon:** Library PHP untuk manipulasi tanggal dan waktu.
+-   **Illuminate\Support\Str:** Utilitas string dari Laravel.
+-   **Illuminate\Support\Facades\Storage:** Abstraksi sistem file Laravel.
+-   **SimpleSoftwareIO\QrCode:** Package Laravel untuk menghasilkan kode QR.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Instalasi
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1.  **Clone Repository:**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    ```bash
+    git clone <repository_url>
+    cd <nama_aplikasi>
+    ```
 
-## Laravel Sponsors
+2.  **Install Composer Dependencies:**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    ```bash
+    composer install
+    ```
 
-### Premium Partners
+3.  **Copy Environment File:**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+    ```bash
+    cp .env.example .env
+    ```
 
-## Contributing
+4.  **Configure Environment Variables (.env):**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    -   Atur `DB_CONNECTION`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` sesuai dengan konfigurasi database Anda.
+    -   Atur `APP_URL` sesuai dengan URL aplikasi Anda.
+    -   Konfigurasi variabel lain sesuai kebutuhan.
 
-## Code of Conduct
+5.  **Generate Application Key:**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    ```bash
+    php artisan key:generate
+    ```
 
-## Security Vulnerabilities
+6.  **Run Migrations:**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    ```bash
+    php artisan migrate --seed
+    ```
 
-## License
+    -   Perintah ini akan menjalankan semua migrasi database dan juga menjalankan seeder untuk data awal (termasuk pembuatan user admin pertama).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+7.  **Set Storage Link:**
+
+    ```bash
+    php artisan storage:link
+    ```
+
+8.  **Serve the Application:**
+    ```bash
+    php artisan serve
+    ```
+    -   Aplikasi akan berjalan pada `http://localhost:8000` secara default.
+
+## Konfigurasi Awal
+
+-   Setelah instalasi, Anda dapat mengakses halaman login admin melalui URL `/login`.
+-   User admin pertama akan dibuat oleh seeder. Anda dapat mencari detail kredensial admin di file `DatabaseSeeder.php` atau output dari perintah `php artisan migrate --seed`.
+-   Setelah login sebagai admin, Anda dapat membuat daftar hadir baru melalui menu "Buat Daftar Hadir Baru" di dashboard atau halaman "Daftar Hadir".
+
+## Penggunaan
+
+### Peserta
+
+1.  Akses tautan unik atau pindai kode QR yang diberikan oleh administrator.
+2.  Isi nama dan tim (jika ada).
+3.  Ambil foto selfie Anda.
+4.  Status kehadiran dan emoticon akan ditampilkan berdasarkan waktu check-in.
+5.  Klik tombol "Kirim Presensi" untuk mencatat kehadiran.
+
+### Administrator
+
+1.  Akses halaman login admin (`/login`) dan login menggunakan kredensial Anda.
+2.  **Dashboard:** Lihat ringkasan dan akses cepat ke fitur-fitur utama.
+3.  **Daftar Hadir:**
+    -   Klik "Buat Daftar Hadir Baru" untuk membuat daftar hadir baru. Isi detail acara, waktu check-in, dan aturan emoticon.
+    -   Lihat daftar hadir yang telah dibuat, edit, hapus, dan lihat detailnya.
+    -   Pada halaman detail daftar hadir, Anda dapat melihat kode QR, tautan unik, dan daftar peserta yang telah check-in.
+    -   Gunakan tombol "Perbaharui Link & QR Code" untuk meregenerasi tautan dan kode QR (link lama akan menjadi tidak valid).
+
+## Kontribusi
+
+Jika Anda ingin berkontribusi pada proyek ini, silakan fork repository dan kirimkan pull request dengan perubahan yang Anda buat.
+
+## Lisensi
+
+[MIT](LICENSE)
